@@ -9,17 +9,23 @@ function TextField({
   placeholder,
   meta,
   disabled,
+  inputStyle,
   ...props
 }: TextFieldProps) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const hasError = meta.touched && meta.error;
 
   return (
     <View style={styles.root}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         placeholder={placeholder}
-        selectionColor="#fff"
-        style={[styles.input, isFocused && styles.inputIsFocused]}
+        style={[
+          styles.input,
+          isFocused && styles.inputIsFocused,
+          hasError && styles.inputHasError,
+          inputStyle,
+        ]}
         value={input.value}
         onChangeText={input.onChange}
         onBlur={() => {
@@ -33,7 +39,7 @@ function TextField({
         editable={!disabled}
         {...props}
       />
-      {(meta.touched && meta.error) && (
+      {hasError && (
         <Text style={styles.error}>
           {meta.error}
         </Text>
@@ -63,6 +69,7 @@ export interface TextFieldProps extends FieldRenderProps<string, any> {
   blurOnSubmit?: boolean;
   onSubmitEditing?: (...args: any[]) => any;
   customStyles?: TextStyle | TextStyle[];
+  inputStyle?: TextStyle | TextStyle[];
 }
 
 export default TextField;

@@ -1,0 +1,1 @@
+export { hasInternetConnection } from './hasInternetConnection';

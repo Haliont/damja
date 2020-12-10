@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  root: {},
+  root: {
+    marginBottom: 10,
+  },
   label: {
     marginBottom: 4,
   },
@@ -14,10 +16,16 @@ export default StyleSheet.create({
     fontSize: 14,
     padding: 5,
     paddingHorizontal: 15,
-    marginBottom: 10,
   },
   inputIsFocused: {
     borderColor: 'rgb(108, 190, 3)',
   },
-  error: {},
+  inputHasError: {
+    borderColor: 'red',
+  },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    marginTop: 2
+  },
 });
