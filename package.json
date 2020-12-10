@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@react-native-community/netinfo": "^5.9.9",
+    "axios": "^0.21.0",
     "final-form": "^4.20.1",
     "react": "16.13.1",
     "react-final-form": "^6.5.2",

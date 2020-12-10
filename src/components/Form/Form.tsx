@@ -7,6 +7,8 @@ import styles from './styles';
 import Button from '../Button';
 import { hasInternetConnection } from '../../utils';
 import { isRequired } from '../../validators';
+import { FieldName, FormValues } from '../../types'
+import { sendEmail } from '../../services/api';
 
 interface Props {
   showConnectionAlert: () => void;
@@ -23,10 +25,11 @@ function Form({ showConnectionAlert }: Props) {
   const showErrorAlert = () => setIsShowErrorAlert(true);
   const hideErrorAlert = () => setIsShowErrorAlert(false);
 
-  const onSubmit = async () => {
+  const onSubmit = async (values: FormValues) => {
     setIsLoading(true);
     try {
       if ((await hasInternetConnection())) {
+        await sendEmail(values);
         showSuccessAlert();
         setIsLoading(false);
       } else {
@@ -55,18 +58,18 @@ function Form({ showConnectionAlert }: Props) {
         onClose={hideErrorAlert}
       />
       <Text style={styles.title}>Ter miwe sargyt / Заказ на свежую ягоду</Text>
-      <FinalForm
+      <FinalForm<FormValues>
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <View style={styles.content}>
-            <Field name="name" placeholder="Adyňyz / Ваше имя *" component={TextField} validate={isRequired} />
-            <Field name="phone" placeholder="Bilgiňiz / Телефон (+993 6X XXXXXX) *" component={TextField} validate={isRequired} />
-            <Field name="address" placeholder="Salgy / Адрес" component={TextField} />
-            <Field name="berry" placeholder="Miwe / Ягода *" component={TextField} validate={isRequired} />
-            <Field name="weight" placeholder="Аgramy / Вес *" component={TextField} validate={isRequired} />
-            <Field name="deliveryDate" placeholder="Gerekli gowşuryş senesi / Требуемая дата доставки" component={TextField} />
+            <Field name={FieldName.NAME} placeholder="Adyňyz / Ваше имя *" component={TextField} validate={isRequired} />
+            <Field name={FieldName.PHONE} placeholder="Bilgiňiz / Телефон (+993 6X XXXXXX) *" component={TextField} validate={isRequired} />
+            <Field name={FieldName.ADDRESS} placeholder="Salgy / Адрес" component={TextField} />
+            <Field name={FieldName.BERRY} placeholder="Miwe / Ягода *" component={TextField} validate={isRequired} />
+            <Field name={FieldName.WEIGHT} placeholder="Аgramy / Вес *" component={TextField} validate={isRequired} />
+            <Field name={FieldName.DELIVERY_DATE} placeholder="Gerekli gowşuryş senesi / Требуемая дата доставки" component={TextField} />
             <Field
-              name="comment"
+              name={FieldName.COMMENT}
               label="Haýyş ýä sorag bolsa aşakda ýäzaýsyňyz / Если у вас есть просьба или вопрос, напишите ниже"
               multiline={true}
               numberOfLines={4}
