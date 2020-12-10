@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FieldRenderProps } from 'react-final-form';
-import { TextInput, Text, View } from 'react-native';
+import { TextInput, Text, View, TextStyle } from 'react-native';
 import styles from './styles';
 
 function TextField({
@@ -61,7 +61,7 @@ export interface TextFieldProps extends FieldRenderProps<string, any> {
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
   returnKeyType?: 'default' | 'done' | 'go' | 'next' | 'search' | 'send';
   blurOnSubmit?: boolean;
-  onSubmitEditing?: CallbackProps;
+  onSubmitEditing?: (...args: any[]) => any;
   customStyles?: TextStyle | TextStyle[];
 }
 
