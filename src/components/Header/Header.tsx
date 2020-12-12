@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, LayoutChangeEvent } from 'react-native';
 import Menu from './components/Menu';
 import styles from './styles';
 
-function Header() {
+interface Props {
+  onRootLayout: (event: LayoutChangeEvent) => void;
+  menuInfo: any;
+}
+
+function Header({ onRootLayout, menuInfo }: Props) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const renderBurgerButton = (
@@ -18,12 +23,12 @@ function Header() {
   );
 
   return (
-    <View style={styles.root}>
+    <View style={styles.root} onLayout={onRootLayout}>
       <View style={styles.inner}>
         <Text style={styles.logo}>3-DAMJA</Text>
         {renderBurgerButton}
       </View>
-      {isOpenMenu && <Menu />}
+      {isOpenMenu && <Menu menuInfo={menuInfo} />}
     </View>
   );
 }

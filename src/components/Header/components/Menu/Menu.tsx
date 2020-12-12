@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 import styles from './styles';
-
-const items = [
-  { title: 'Baş Sahypa', link: 'https://www.3-damja.com/index.html' },
-  {
-    title: 'Daýhana kömek hökmünde',
-    link: 'https://www.3-damja.com/publications_to_educate_farmer.html',
-    subItems: [
-      { title: 'Ferma döretmek', link: 'https://www.3-damja.com/farm_start_steps.html' },
-      { title: 'Telekeçilere oba hojalyk işden peýdalanmak hakynda', link: 'https://www.3-damja.com/agrobusiness_prospects_tkm.html' },
-    ]
-  },
-];
 
 interface MenuItemProps {
   title: string;
@@ -40,7 +29,25 @@ const MenuItem = ({ title, link, subItems }: MenuItemProps) => {
   return (
     <View style={styles.menuItem}>
       <View style={styles.menuItemInner}>
-        <TouchableOpacity style={styles.menuItemTextContainer} onPress={() => { console.log('press'); }}>
+        <TouchableOpacity
+          style={styles.menuItemTextContainer}
+          onPress={async () => {
+            try {
+              InAppBrowser.open(link, {
+                showTitle: true,
+                enableUrlBarHiding: true,
+                enableDefaultShare: true,
+                forceCloseOnRedirection: true,
+              }).then((result) => {
+                // Alert.alert(JSON.stringify(result))
+                console.log('open link result', result);
+              })
+            } catch (err) {
+              console.log('open link err', err);
+              Linking.openURL(link);
+            }
+          }}
+        >
           <Text style={styles.menuItemText}>{title}</Text>
         </TouchableOpacity>
         {hasSubComments && (
@@ -66,10 +73,10 @@ const MenuItem = ({ title, link, subItems }: MenuItemProps) => {
   );
 };
 
-function Menu() {
+function Menu({ menuInfo }: { menuInfo: any }) {
   return (
-    <View style={styles.root}>
-      {items.map((item) => (
+    <ScrollView contentContainerStyle={styles.root}>
+      {menuInfo.map((item: any) => (
         <MenuItem
           key={item.title}
           title={item.title}
@@ -77,7 +84,7 @@ function Menu() {
           subItems={item.subItems}
         />
       ))}
-    </View>
+    </ScrollView>
   );
 }
 
