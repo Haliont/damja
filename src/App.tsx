@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
 import { Header, Form, Modal } from './components';
+import { HEADER_HEIGHT } from './constants';
 import { hasInternetConnection } from './utils';
 
 const App = () => {
@@ -18,16 +19,16 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ paddingTop: HEADER_HEIGHT }}>
+        <Header />
+        <View style={{ paddingHorizontal: 15 }}>
+          <Form showConnectionAlert={showConnectionAlert} />
+        </View>
         <Modal
           text={'Siziň enjamyňyzy internet aragatnaşykdan kesilendir / Ваше устройство не подключено к интернету'}
           visible={isShowConnectionAlert}
           onClose={hideConnectionAlert}
         />
-        <Header />
-        <View style={{ paddingHorizontal: 15 }}>
-          <Form showConnectionAlert={showConnectionAlert} />
-        </View>
       </ScrollView>
     </SafeAreaView>
   );

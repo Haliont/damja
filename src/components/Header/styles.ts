@@ -1,14 +1,23 @@
 import { StyleSheet } from 'react-native';
+import { HEADER_HEIGHT, windowWidth } from '../../constants';
 
 export default StyleSheet.create({
   root: {
+    zIndex: 1,
+    position: 'absolute',
+  },
+  inner: {
+    width: windowWidth,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 60,
+    height: HEADER_HEIGHT,
+    backgroundColor: '#fff',
     paddingHorizontal: 15,
     borderBottomWidth: 2,
-    borderBottomColor: '#eee'
+    borderBottomColor: '#eee',
+    position: 'relative',
+    zIndex: 1,
   },
   logo: {
     fontFamily: 'TrebuchetMS-Bold',
