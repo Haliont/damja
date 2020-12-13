@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/netinfo": "^5.9.9",
     "@types/cheerio": "^0.22.23",
     "axios": "^0.21.0",

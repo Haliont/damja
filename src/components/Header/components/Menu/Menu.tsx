@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
 import styles from './styles';
+import { MenuItem as MenuItemType } from '../../../../types';
 
 interface MenuItemProps {
   title: string;
@@ -73,10 +74,10 @@ const MenuItem = ({ title, link, subItems }: MenuItemProps) => {
   );
 };
 
-function Menu({ menuInfo }: { menuInfo: any }) {
+function Menu({ menuItems }: { menuItems: Array<MenuItemType> }) {
   return (
     <ScrollView contentContainerStyle={styles.root}>
-      {menuInfo.map((item: any) => (
+      {menuItems.map((item: any) => (
         <MenuItem
           key={item.title}
           title={item.title}

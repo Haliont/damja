@@ -22,7 +22,7 @@ function Modal({ text, textStyle, visible, onClose }: Props) {
           <Text style={[styles.modalText, textStyle]}>
             {text}
           </Text>
-          <Button text=".Akyn / Закрыть" onPress={onClose} />
+          <Button text="Ýapyň / Закрыть" onPress={onClose} />
         </View>
       </View>
     </ReactNativeModal>

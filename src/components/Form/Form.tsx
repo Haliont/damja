@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import { Form as FinalForm, Field } from 'react-final-form';
+import { Form as FinalForm, Field, FormApi } from 'react-final-form';
 import TextField from '../TextField';
 import Modal from '../Modal';
 import styles from './styles';
@@ -25,13 +25,14 @@ function Form({ showConnectionAlert }: Props) {
   const showErrorAlert = () => setIsShowErrorAlert(true);
   const hideErrorAlert = () => setIsShowErrorAlert(false);
 
-  const onSubmit = async (values: FormValues) => {
+  const onSubmit = async (values: FormValues, form: FormApi<FormValues, Partial<FormValues>>) => {
     setIsLoading(true);
     try {
       if ((await hasInternetConnection())) {
         await sendEmail(values);
         showSuccessAlert();
         setIsLoading(false);
+        setTimeout(form.restart);
       } else {
         setTimeout(() => {
           showConnectionAlert();

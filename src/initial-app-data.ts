@@ -1,5 +1,7 @@
-export const initialSiteInfo = {
-  menuInfo: [
+import { AppData } from './types';
+
+export const initialAppData: AppData = {
+  menuItems: [
     {
       "title": "Baş Sahypa",
       "link": "https://www.3-damja.com/index.html",
