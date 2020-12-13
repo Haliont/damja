@@ -10,6 +10,8 @@ target 'damja' do
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
+  pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
+
   target 'damjaTests' do
     inherit! :complete
     # Pods for testing

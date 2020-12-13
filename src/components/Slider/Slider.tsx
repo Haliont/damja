@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
+import { CachedImage } from 'react-native-cached-image';
 import Swiper from 'react-native-swiper';
 import styles from './styles';
 
@@ -19,7 +20,12 @@ function Slider({ imageUrls, autoplayTimeout = 3 }: Props) {
       >
         {imageUrls.map((imageUrl) => (
           <View key={imageUrl} style={styles.slide}>
-            <Image source={{ uri: imageUrl }} style={styles.slideImg} />
+            <CachedImage
+              source={{
+                uri: imageUrl,
+              }}
+              style={styles.slideImg}
+            />
           </View>
         ))}
       </Swiper>
