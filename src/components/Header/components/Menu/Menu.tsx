@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
 import styles from './styles';
-import { MenuItem as MenuItemType } from '../../../../types';
+import { MenuItem as MenuItemType } from '../../../../services/app-data';
 
 interface MenuItemProps {
   title: string;

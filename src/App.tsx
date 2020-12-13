@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
-import { Header, Form, Modal } from './components';
+import { Header, Form, Modal, Descriptions } from './components';
 import { HEADER_HEIGHT, windowHeight } from './constants';
 import { hasInternetConnection } from './utils';
-import { AppData } from './types';
-import { getAppData } from './services/app-data';
+import { getAppData, AppData } from './services/app-data';
 import { initialAppData } from './initial-app-data';
 
 const App = () => {
@@ -25,6 +24,7 @@ const App = () => {
           setAppData(JSON.parse(storedAppDataJSON) as AppData);
         }
         const $appData = await getAppData();
+        console.log('$appData', JSON.stringify($appData, null, '\t'));
         setAppData($appData);
 
         AsyncStorage.setItem('appData', JSON.stringify($appData));
@@ -43,6 +43,7 @@ const App = () => {
     }, 2000);
   }, []);
 
+  const descriptionItemsLen = appData.descriptionItems.length;
   return (
     <SafeAreaView>
       <ScrollView contentContainerStyle={{ paddingTop: HEADER_HEIGHT, minHeight: scrollViewMinHeight }}>
@@ -55,6 +56,7 @@ const App = () => {
         />
         <View style={{ paddingHorizontal: 15 }}>
           <Form showConnectionAlert={showConnectionAlert} />
+          {descriptionItemsLen > 0 && <Descriptions descriptionItems={appData.descriptionItems} />}
         </View>
         <Modal
           text={'Siziň enjamyňyzy internet aragatnaşykdan kesilendir / Ваше устройство не подключено к интернету'}

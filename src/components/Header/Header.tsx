@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, LayoutChangeEvent } from 'react-native';
 import Menu from './components/Menu';
 import styles from './styles';
-import { MenuItem } from '../../types';
+import { MenuItem } from '../../services/app-data';
 
 interface Props {
   onRootLayout: (event: LayoutChangeEvent) => void;

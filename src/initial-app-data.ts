@@ -1,4 +1,4 @@
-import { AppData } from './types';
+import { AppData } from './services/app-data';
 
 export const initialAppData: AppData = {
   menuItems: [
@@ -157,6 +157,16 @@ export const initialAppData: AppData = {
       "title": "Sargyt / Заказ",
       "link": "https://www.3-damja.com/sargyt.html",
       "subItems": []
+    }
+  ],
+  descriptionItems: [
+    {
+      "title": "3-DAMJA Hormatly Müşderileri!",
+      "content": "Deslapky töleg arkaly 2021 hasylyny ýygnamak üçin sargyt alyp başladyk. 2021-nji ýylyň fewral aýynyň ahyryna çenli sargyt eden bolsaňyz, öňünden töleg göz öňünde tutulýar – bu wagt malina meýdanlaryny tertip boýunça köpeltmegiň üstünde işleýän wagtymyz bolup durýar.\nÖňküsi ýaly, indiki tomus we güýz hasyly möwsüminde çak edilýän bahadan 33% arzan, 1 kg üçin 110 manat.\nÖňünden tölän tölegiňiz, gyşda işlemegi dowam etdirmäge mümkinçilik berýär – bu iň uly işleriň alnyp barylýan we miweleri ösdürip ýetişdirmek üçin çykdajylaryň çykarylýan wagty. Köp sagboluň!\nSargyt +99365818077 belgä SMS ibermek ýa-da www.3-damja.com/sargyt websaýtymyzdaky sargydyň sahypany doldurmak we “2021” senesini görkezmek arkaly sargyt edilip bilersiňiz. Sargyt edip pul “Börejik” kafede (belgisi +993 12 95 83 89) töläp bilersiňiz."
+    },
+    {
+      "title": "Уважаемые клиенты 3-DAMJA!",
+      "content": "Мы начали прием заказов на малину урожая 2021-го года с предварительной оплатой. Предварительной оплата считается, если вы ее сделали до конца февраля 2021 года – это время, когда мы можем работать над увеличением площадей малины под заказ.\nКак и раньше, цена на 33% ниже, чем прогнозируемая стоимость в сезон урожая летом и осенью следующего года, 110 манат за 1 кг.\nВаша оплата заранее позволяет нам продолжать работу зимой – это время самых больших работ и затрат на выращивание ягоды. Огромное вам спасибо!\nЗаказ можно сделать, отослав СМС-сообщение на номер +99365818077, или заполнив форму на нашем сайте www.3-damja.com/sargyt и указав дату “2021”. Деньги по оформлению заказа вы можете оплатить в кафе “Börejik”, телефон +993 12 95 83 89."
     }
   ]
 };

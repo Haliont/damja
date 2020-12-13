@@ -17,16 +17,3 @@ export type FormValues = {
   [FieldName.DELIVERY_DATE]: string,
   [FieldName.COMMENT]: string,
 }
-
-export type MenuItem = {
-  title: string;
-  link: string;
-  subItems?: Array<{
-    title: string;
-    link: string;
-  }>;
-}
-
-export type AppData = {
-  menuItems: Array<MenuItem>;
-}

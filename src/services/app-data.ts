@@ -1,7 +1,25 @@
 import axios from 'axios';
 import cheerio from 'react-native-cheerio';
 import URL from 'url';
-import { AppData, MenuItem } from '../types';
+
+export type MenuItem = {
+  title: string;
+  link: string;
+  subItems?: Array<{
+    title: string;
+    link: string;
+  }>;
+}
+
+export type DescriptionItem = {
+  title: string;
+  content: string;
+}
+
+export type AppData = {
+  menuItems: Array<MenuItem>;
+  descriptionItems: Array<DescriptionItem>;
+}
 
 const getMenuItems = ($: any): Array<MenuItem> => {
   const origin = 'https://www.3-damja.com';
@@ -26,6 +44,17 @@ const getMenuItems = ($: any): Array<MenuItem> => {
   return result;
 };
 
+const getDescriptionItems = ($: any): Array<DescriptionItem> => {
+  const items = $('.smue-code-obj').toArray();
+
+  const result = items.map((item: any) => ({
+    title: $(item).find('h5').text(),
+    content: $(item).find('h6').text(),
+  }));
+
+  return result;
+}
+
 export const getAppData = async (): Promise<AppData> => {
   const html = await axios
     .get('https://www.3-damja.com/sargyt.html')
@@ -35,5 +64,6 @@ export const getAppData = async (): Promise<AppData> => {
 
   return {
     menuItems: getMenuItems($),
+    descriptionItems: getDescriptionItems($),
   };
 };
