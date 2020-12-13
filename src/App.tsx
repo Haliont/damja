@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { SafeAreaView, ScrollView, View, Text } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
-import { Header, Form, Modal, Descriptions } from './components';
+import { Header, Form, Modal, Descriptions, Slider } from './components';
 import { HEADER_HEIGHT, windowHeight } from './constants';
 import { hasInternetConnection } from './utils';
 import { getAppData, AppData } from './services/app-data';
@@ -19,6 +19,7 @@ const App = () => {
   useEffect(() => {
     const doFetch = async () => {
       try {
+        await AsyncStorage.clear(); // TODO: remove this line
         const storedAppDataJSON = await AsyncStorage.getItem('appData');
         if (storedAppDataJSON) {
           setAppData(JSON.parse(storedAppDataJSON) as AppData);
@@ -57,6 +58,14 @@ const App = () => {
         <View style={{ paddingHorizontal: 15 }}>
           <Form showConnectionAlert={showConnectionAlert} />
           {descriptionItemsLen > 0 && <Descriptions descriptionItems={appData.descriptionItems} />}
+          {appData.sliderImageUrls.length > 0 && (
+            <View style={{ paddingBottom: 40 }}>
+              <Slider
+                imageUrls={appData.sliderImageUrls}
+                autoplayTimeout={4}
+              />
+            </View>
+          )}
         </View>
         <Modal
           text={'Siziň enjamyňyzy internet aragatnaşykdan kesilendir / Ваше устройство не подключено к интернету'}

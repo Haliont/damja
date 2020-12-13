@@ -2,6 +2,8 @@ import axios from 'axios';
 import cheerio from 'react-native-cheerio';
 import URL from 'url';
 
+const BASE_URL = 'https://www.3-damja.com';
+
 export type MenuItem = {
   title: string;
   link: string;
@@ -19,10 +21,10 @@ export type DescriptionItem = {
 export type AppData = {
   menuItems: Array<MenuItem>;
   descriptionItems: Array<DescriptionItem>;
+  sliderImageUrls: Array<string>
 }
 
 const getMenuItems = ($: any): Array<MenuItem> => {
-  const origin = 'https://www.3-damja.com';
   const items = $('#menu-3-damja-websayty > li').toArray();
 
   const result = items.map((item: any) => {
@@ -30,12 +32,12 @@ const getMenuItems = ($: any): Array<MenuItem> => {
 
     return {
       title: $(anchor).text(),
-      link: URL.resolve(origin, $(anchor).attr('href')),
+      link: URL.resolve(BASE_URL, $(anchor).attr('href')),
       subItems: $(item).find('ul li').toArray().map((subItem: any) => {
         const subItemAnchor = $(subItem).find('> a');
         return {
           title: $(subItemAnchor).text(),
-          link: URL.resolve(origin, $(subItemAnchor).attr('href')),
+          link: URL.resolve(BASE_URL, $(subItemAnchor).attr('href')),
         }
       }),
     };
@@ -55,9 +57,21 @@ const getDescriptionItems = ($: any): Array<DescriptionItem> => {
   return result;
 }
 
+const getSliderImageUrls = ($: any): Array<string> => {
+  const firstSlider = $('.smue-image-slider-obj').toArray()[0];
+
+  const images = $(firstSlider).find('li img').toArray();
+  const imageUrls = images.map((img: any) => {
+    const url = URL.resolve(BASE_URL, $(img).attr('src'));
+    return url;
+  });
+
+  return imageUrls;
+}
+
 export const getAppData = async (): Promise<AppData> => {
   const html = await axios
-    .get('https://www.3-damja.com/sargyt.html')
+    .get(`${BASE_URL}/sargyt.html`)
     .then((res) => res.data)
 
   const $ = cheerio.load(html);
@@ -65,5 +79,6 @@ export const getAppData = async (): Promise<AppData> => {
   return {
     menuItems: getMenuItems($),
     descriptionItems: getDescriptionItems($),
+    sliderImageUrls: getSliderImageUrls($),
   };
 };
