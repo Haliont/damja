@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
-import InAppBrowser from 'react-native-inappbrowser-reborn';
 import styles from './styles';
 import { MenuItem as MenuItemType } from '../../../../services/app-data';
+import { openLink } from '../../../../utils';
 
 interface MenuItemProps {
   title: string;
@@ -32,22 +32,7 @@ const MenuItem = ({ title, link, subItems }: MenuItemProps) => {
       <View style={styles.menuItemInner}>
         <TouchableOpacity
           style={styles.menuItemTextContainer}
-          onPress={async () => {
-            try {
-              InAppBrowser.open(link, {
-                showTitle: true,
-                enableUrlBarHiding: true,
-                enableDefaultShare: true,
-                forceCloseOnRedirection: true,
-              }).then((result) => {
-                // Alert.alert(JSON.stringify(result))
-                console.log('open link result', result);
-              })
-            } catch (err) {
-              console.log('open link err', err);
-              Linking.openURL(link);
-            }
-          }}
+          onPress={() => openLink(link)}
         >
           <Text style={styles.menuItemText}>{title}</Text>
         </TouchableOpacity>
