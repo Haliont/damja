@@ -20,7 +20,7 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   logo: {
-    fontFamily: 'TrebuchetMS-Italic',
+    fontFamily: 'Trebuchet-BoldItalic',
     fontSize: 30,
     color: 'rgb(108, 190, 3)',
   },
