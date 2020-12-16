@@ -19,18 +19,16 @@ const App = () => {
   useEffect(() => {
     const doFetch = async () => {
       try {
-        await AsyncStorage.clear(); // TODO: remove this line
         const storedAppDataJSON = await AsyncStorage.getItem('appData');
         if (storedAppDataJSON) {
           setAppData(JSON.parse(storedAppDataJSON) as AppData);
         }
         const $appData = await getAppData();
-        console.log('$appData', JSON.stringify($appData, null, '\t'));
         setAppData($appData);
 
         AsyncStorage.setItem('appData', JSON.stringify($appData));
       } catch (err) {
-
+        console.log('err', err);
       }
     };
     doFetch();
