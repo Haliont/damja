@@ -40,11 +40,11 @@ function Header({ onRootLayout, menuItems }: Props) {
 
   const renderExitAppModal = (
     <Modal
-      text="Programmany ýapmak isleýändigiňize ynanýarsyňyzmy? / Вы действительно хотите закрыть приложение?"
+      text="Programmany ýapmak isleýärsiñizmi? / Вы действительно хотите закрыть приложение?"
       visible={isOpenExitAppModal}
     >
       <View style={{ flexDirection: 'row' }}>
-        <Button text=".Ok / Нет" onPress={() => setIsOpenExitAppModal(false)} style={{ marginRight: 10 }} />
+        <Button text="Ýok / Нет" onPress={() => setIsOpenExitAppModal(false)} style={{ marginRight: 10 }} />
         <Button text="Hawa / Да" onPress={() => BackHandler.exitApp()} />
       </View>
     </Modal>
