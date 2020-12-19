@@ -6,11 +6,12 @@ import styles from './styles';
 interface Props {
   text: string;
   visible: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   textStyle?: TextStyle | TextStyle[];
+  children?: React.ReactNode | React.ReactNode[];
 }
 
-function Modal({ text, textStyle, visible, onClose }: Props) {
+function Modal({ text, textStyle, visible, onClose, children }: Props) {
   return (
     <ReactNativeModal
       animationType="fade"
@@ -22,7 +23,8 @@ function Modal({ text, textStyle, visible, onClose }: Props) {
           <Text style={[styles.modalText, textStyle]}>
             {text}
           </Text>
-          <Button text="Ýapyň / Закрыть" onPress={onClose} />
+          {onClose && <Button text="Ýapyň / Закрыть" onPress={onClose} />}
+          {children}
         </View>
       </View>
     </ReactNativeModal>

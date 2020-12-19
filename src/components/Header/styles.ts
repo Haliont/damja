@@ -24,7 +24,7 @@ export default StyleSheet.create({
     fontSize: 30,
     color: 'rgb(108, 190, 3)',
   },
-  burgerButton: {
+  button: {
     height: 40,
     width: 55,
     alignItems: 'center',
