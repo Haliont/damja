@@ -77,7 +77,7 @@ export const initialAppData: AppData = {
     },
     {
       "title": "Surat / Фото",
-      "link": "http://www.3-damja.com/gallery",
+      "link": "https://www.3-damja.com/gallery/",
       "subItems": []
     },
     {

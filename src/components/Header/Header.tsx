@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, LayoutChangeEvent, BackHandler } from 'react-native';
+import { View, Text, TouchableOpacity, Image, LayoutChangeEvent } from 'react-native';
+import RNExitApp from 'react-native-exit-app';
 import Menu from './components/Menu';
 import styles from './styles';
 import Modal from '../Modal';
@@ -45,7 +46,7 @@ function Header({ onRootLayout, menuItems }: Props) {
     >
       <View style={{ flexDirection: 'row' }}>
         <Button text="Ýok / Нет" onPress={() => setIsOpenExitAppModal(false)} style={{ marginRight: 10 }} />
-        <Button text="Hawa / Да" onPress={() => BackHandler.exitApp()} />
+        <Button text="Hawa / Да" onPress={() => RNExitApp.exitApp()} />
       </View>
     </Modal>
   );

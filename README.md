@@ -237,3 +237,6 @@ class CachedImage extends React.Component {
 
 module.exports = CachedImage;
 ```
+4. `grep -rl "s.dependency 'React/Core'" node_modules/ | xargs sed -i '' 's=React/Core=React-Core=g'`
+5. `cd ios && pod install`
+6. run `yarn ios` or `yarn android`

@@ -36,7 +36,7 @@ function Footer() {
         <Text style={styles.sectionText}>
           Biz öz bagçylyk hojalygymyzyň gözlegini we taýýarlygyny 2005 ýyldan başladyk. Biziň maksadymyz ýerli bazar üçin organiki miwe önümleriniň durnukly öndürilmegi bolup durýar. Biz – Baharly etrabynyň “Garry Nohur” daýhan birleşiginiň agzalary we biziň bagymyz Köpetdagyň merkezinde deňiz derejesinden 1200-1300 m beýiklikde ýerleşýär. Siz suratlary
         </Text>
-        <Link link="http://www.3-damja.com/gallery" text="şu ýerde" />
+        <Link link="https://www.3-damja.com/gallery/" text="şu ýerde" />
         <Text style={styles.sectionText}> görüp bilersiňiz.</Text>
       </View>
     </View>
