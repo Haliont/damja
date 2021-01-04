@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
-import { HEADER_HEIGHT, windowWidth } from '../../constants';
+import { HEADER_HEIGHT } from '../../constants';
 
 export default StyleSheet.create({
   root: {
+    width: '100%',
     zIndex: 1,
     position: 'absolute',
   },
   inner: {
-    width: windowWidth,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
