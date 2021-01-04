@@ -6,7 +6,7 @@ module.exports = {
   dependencies: {
     'react-native-fetch-blob': {
       platforms: {
-        android: null, // disable Android platform, other platforms will still autolink if provided
+        android: null,
         ios: null,
       },
     },
