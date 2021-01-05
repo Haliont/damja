@@ -58,9 +58,9 @@ const getDescriptionItems = ($: any): Array<DescriptionItem> => {
 }
 
 const getSliderImageUrls = ($: any): Array<string> => {
-  const firstSlider = $('.smue-image-slider-obj').toArray()[0];
+  const secondSlider = $('.smue-image-slider-obj').toArray()[1];
 
-  const images = $(firstSlider).find('li img').toArray();
+  const images = $(secondSlider).find('li img').toArray();
   const imageUrls = images.map((img: any) => {
     const url = URL.resolve(BASE_URL, $(img).attr('src'));
     return url;
