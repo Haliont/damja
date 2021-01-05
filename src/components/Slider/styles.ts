@@ -18,7 +18,7 @@ export default StyleSheet.create({
   slide: {
     flex: 1,
     height: IMAGE_HEIGHT,
-    backgroundColor: '#000'
+    backgroundColor: '#000',
   },
   slideImg: {
     width: '100%',

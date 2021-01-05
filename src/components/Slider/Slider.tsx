@@ -19,9 +19,10 @@ function Slider({ imageUrls, autoplayTimeout = 3 }: Props) {
   } = useDimensions();
   const isLandscape = windowWidth > windowHeight;
 
-  const LANDSCAPE_IMAGE_PADDING = 40;
-  const LANDSCAPE_IMAGE_HEIGHT = windowHeight - LANDSCAPE_IMAGE_PADDING;
-  const landscapeImageStyle = isLandscape && { height: LANDSCAPE_IMAGE_HEIGHT };
+  const landscapeImageStyle = isLandscape && {
+    width: 284,
+    height: 340,
+  };
 
   return (
     <View style={styles.root}>
