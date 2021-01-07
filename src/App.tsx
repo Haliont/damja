@@ -4,7 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SafeAreaView from 'react-native-safe-area-view';
 import AsyncStorage from '@react-native-community/async-storage'
 import { Header, Form, Modal, Descriptions, Slider, Footer } from './components';
-import { HEADER_HEIGHT, windowHeight } from './constants';
+import { CONTENT_HORIZONTAL_PADDING, HEADER_HEIGHT, windowHeight } from './constants';
 import { hasInternetConnection } from './utils';
 import { getAppData, AppData } from './services/app-data';
 import { initialAppData } from './initial-app-data';
@@ -56,7 +56,7 @@ const App = () => {
               setScrollViewMinHeight(height);
             }}
           />
-          <View style={{ paddingHorizontal: 15 }}>
+          <View style={{ paddingHorizontal: CONTENT_HORIZONTAL_PADDING }}>
             <Form showConnectionAlert={showConnectionAlert} />
             {descriptionItemsLen > 0 && <Descriptions descriptionItems={appData.descriptionItems} />}
             {appData.sliderImageUrls.length > 0 && (

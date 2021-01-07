@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { CONTENT_HORIZONTAL_PADDING } from '../../constants';
 
 export default StyleSheet.create({
   root: {
@@ -7,7 +8,7 @@ export default StyleSheet.create({
   },
   content: {
     paddingVertical: 50,
-    paddingHorizontal: 15,
+    paddingHorizontal: CONTENT_HORIZONTAL_PADDING,
     backgroundColor: "rgba(0, 0, 0, 0.8)"
   },
   section: {

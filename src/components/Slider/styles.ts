@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const IMAGE_HEIGHT = 446;
+export const SLIDER_BORDER_WIDTH = 4;
 
 export default StyleSheet.create({
   root: {
@@ -8,20 +8,10 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   sliderContainer: {
-    maxWidth: 410,
-    height: IMAGE_HEIGHT,
-    borderWidth: 4,
+    borderWidth: SLIDER_BORDER_WIDTH,
     borderColor: '#fff',
     borderRadius: 2,
     elevation: 5,
-  },
-  slide: {
-    flex: 1,
-    height: IMAGE_HEIGHT,
     backgroundColor: '#000',
-  },
-  slideImg: {
-    width: '100%',
-    height: IMAGE_HEIGHT,
   },
 });

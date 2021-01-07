@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { HEADER_HEIGHT } from '../../constants';
+import { CONTENT_HORIZONTAL_PADDING, HEADER_HEIGHT } from '../../constants';
 
 export default StyleSheet.create({
   root: {
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: HEADER_HEIGHT,
     backgroundColor: '#fff',
-    paddingHorizontal: 15,
+    paddingHorizontal: CONTENT_HORIZONTAL_PADDING,
     borderBottomWidth: 2,
     borderBottomColor: '#eee',
     position: 'relative',
